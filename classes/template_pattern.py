@@ -36,9 +36,12 @@ class ShippingContainer:
             owner_code=owner_code,
             serial=ShippingContainer._get_next_serial())
 
+    def _calc_volume(self):
+        return ShippingContainer.HEIGHT_FT * ShippingContainer.WIDTH_FT * self.length_ft
+
     @property
     def volume_ft3(self):
-        return ShippingContainer.HEIGHT_FT * ShippingContainer.WIDTH_FT * self.length_ft
+        return self._calc_volume()
 
 class RefrigeratedShippingContainer(ShippingContainer):
 
