@@ -48,3 +48,7 @@ class RefrigeratedShippingContainer(ShippingContainer):
         if celsius > RefrigeratedShippingContainer.MAX_CELSIUS:
             raise ValueError('Temperature is too hot.')
         self._celsius = celsius
+
+    @property
+    def celsius(self):
+        return self._celsius
