@@ -58,8 +58,8 @@ class RefrigeratedShippingContainer(ShippingContainer):
     def _f_to_c(fahrenheit):
         return (fahrenheit -32) * 5/9
 
-    def __init__(self, owner_code, contents, celsius):
-        super().__init__(owner_code, contents)
+    def __init__(self, owner_code, length_ft, contents, celsius):
+        super().__init__(owner_code, length_ft, contents)
         self.celsius = celsius
 
     @property
