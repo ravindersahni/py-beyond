@@ -80,3 +80,10 @@ class RefrigeratedShippingContainer(ShippingContainer):
     @fahrenheit.setter
     def fahrenheit(self, value):
         self.celsius = RefrigeratedShippingContainer._f_to_c(value)
+
+    @property
+    def volume_ft3(self):
+        return (self.length_ft
+                * ShippingContainer.HEIGHT_FT
+                * ShippingContainer.WIDTH_FT
+                - RefrigeratedShippingContainer.FRIDGE_VOLUME_FT3)
