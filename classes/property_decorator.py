@@ -22,15 +22,16 @@ class ShippingContainer:
         return result
 
     @classmethod
-    def create_empty_container(cls, owner_code, *args, **kwargs):
-        return cls(owner_code, contents=None, *args, **kwargs)
+    def create_empty_container(cls, owner_code, length_ft, *args, **kwargs):
+        return cls(owner_code, length_ft, contents=None, *args, **kwargs)
 
     @classmethod
-    def create_with_items(cls, owner_code, items, *args, **kwargs):
-        return cls(owner_code, contents=list(items), *args, **kwargs)
+    def create_with_items(cls, owner_code, length_ft, items, *args, **kwargs):
+        return cls(owner_code, length_ft, contents=list(items), *args, **kwargs)
 
-    def __init__(self, owner_code, contents):
+    def __init__(self, owner_code, length_ft, contents):
         self.contents = contents
+        self.length_ft = length_ft
         self.bic = self._make_bic_code( # must use self for polymorphic dispatch
             owner_code=owner_code,
             serial=ShippingContainer._get_next_serial())
