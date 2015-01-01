@@ -5,6 +5,9 @@ import iso6346
 
 class ShippingContainer:
 
+    HEIGHT_FT = 8.5
+    WIDTH_FT = 8.0
+
     next_serial = 0
 
     @staticmethod
