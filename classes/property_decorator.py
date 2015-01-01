@@ -53,9 +53,7 @@ class RefrigeratedShippingContainer(ShippingContainer):
 
     def __init__(self, owner_code, contents, celsius):
         super().__init__(owner_code, contents)
-        if celsius > RefrigeratedShippingContainer.MAX_CELSIUS:
-            raise ValueError('Temperature is too hot.')
-        self._celsius = celsius
+        self.celsius = celsius
 
     @property
     def celsius(self):
