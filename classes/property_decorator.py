@@ -89,3 +89,11 @@ class RefrigeratedShippingContainer(ShippingContainer):
 class HeatedRefrigeratorShippingContainer(RefrigeratedShippingContainer):
 
     MIN_CELSIUS = -20.0
+
+    @RefrigeratedShippingContainer.celsius.setter
+    def celsius(self, value):
+        if not (HeatedRefrigeratorShippingContainer.MIN_CELSIUS
+                <= value
+                <= RefrigeratedShippingContainer.MAX_CELSIUS):
+            raise ValueError('Temperature is out of range.')
+        self._celsius = value
