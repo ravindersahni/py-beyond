@@ -95,8 +95,7 @@ class HeatedRefrigeratorShippingContainer(RefrigeratedShippingContainer):
 
     MIN_CELSIUS = -20.0
 
-    @RefrigeratedShippingContainer.celsius.setter
-    def celsius(self, value):
+    def _set_celsius(self, value):
         if value < HeatedRefrigeratorShippingContainer.MIN_CELSIUS:
             raise ValueError('Temperature is too cold.')
-        RefrigeratedShippingContainer.celsius.fset(self, value)
+        super()._set_celsius(value)
