@@ -1,0 +1,7 @@
+This is
+just
+an example.
+END
+You won't
+see
+this.
