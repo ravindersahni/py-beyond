@@ -50,3 +50,9 @@ class SortedSet(Sequence):
 
     def __add__(self, other):
         return SortedSet(chain(self._items, other._items))
+
+    def __mul__(self, other):
+        return self if other > 0 else SortedSet()
+
+    def __rmul__(self, other):
+        return self * other
