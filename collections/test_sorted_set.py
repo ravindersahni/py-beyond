@@ -2,7 +2,7 @@ __author__ = 'instancetype'
 
 
 import unittest
-from collections.abc import Container, Sized, Iterable, Sequence
+from collections.abc import Container, Sized, Iterable, Sequence, Set
 
 from sorted_set import SortedSet
 
@@ -278,3 +278,9 @@ class TestRelationalSetProtocol(unittest.TestCase):
         s = SortedSet({1, 2})
         t = SortedSet({1, 2, 3})
         self.assertFalse(s >= t)
+
+
+class TestSetProtocol(unittest.TestCase):
+
+    def test_protocol(self):
+        self.assertTrue(issubclass(SortedSet, Set))
