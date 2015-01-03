@@ -24,4 +24,6 @@ class SortedSet:
         )
 
     def __eq__(self, other):
+        if not isinstance(other, SortedSet):
+            return NotImplemented
         return self._items == other._items
