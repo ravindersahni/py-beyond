@@ -255,7 +255,7 @@ class TestRelationalSetProtocol(unittest.TestCase):
     def test_lte_negative(self):
         s = SortedSet({1, 2, 3})
         t = SortedSet({1, 2})
-        self.assertTrue(s <= t)
+        self.assertFalse(s <= t)
 
     def test_gt_positive(self):
         s = SortedSet({1, 2, 3})
