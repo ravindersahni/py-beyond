@@ -82,6 +82,8 @@ class TestIterableProtocol(unittest.TestCase):
         self.assertRaises(StopIteration, lambda: next(i))
 
     def test_for_loop(self):
+        index = 0
         expected = [1, 3, 5, 7]
-        for item, index in self.s.items():
+        for item in self.s:
             self.assertEqual(item, expected[index])
+            index += 1
