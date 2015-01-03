@@ -231,3 +231,50 @@ class TestInequalityProtocol:
     def test_identical(self):
         s = SortedSet([2, 4, 6])
         self.assertFalse(s != s)
+
+
+class TestRelationalSetProtocol(unittest.TestCase):
+
+    def test_lt_positive(self):
+        s = SortedSet({1, 2})
+        t = SortedSet({1, 2, 3})
+        self.assertTrue(s < t)
+
+    def test_lt_negative(self):
+        s = SortedSet({1, 2, 3})
+        t = SortedSet({1, 2, 3})
+        self.assertFalse(s < t)
+
+    def test_lte_positive(self):
+        s = SortedSet({1, 2})
+        r = SortedSet({1, 2, 3})
+        t = SortedSet({1, 2, 3})
+        self.assertTrue(s <= t)
+        self.assertTrue(r <= t)
+
+    def test_lte_negative(self):
+        s = SortedSet({1, 2, 3})
+        t = SortedSet({1, 2})
+        self.assertTrue(s <= t)
+
+    def test_gt_positive(self):
+        s = SortedSet({1, 2, 3})
+        t = SortedSet({1, 2})
+        self.assertTrue(s > t)
+
+    def test_gt_negative(self):
+        s = SortedSet({1, 2})
+        t = SortedSet({1, 2, 3})
+        self.assertFalse(s > t)
+
+    def test_gte_positive(self):
+        s = SortedSet({1, 2, 3})
+        r = SortedSet({1, 2})
+        t = SortedSet({1, 2})
+        self.assertTrue(s >= t)
+        self.assertTrue(r >= t)
+
+    def test_gte_negative(self):
+        s = SortedSet({1, 2})
+        t = SortedSet({1, 2, 3})
+        self.assertFalse(s >= t)
