@@ -66,3 +66,22 @@ class TestSizedProtocol(unittest.TestCase):
     def test_with_duplicates(self):
         s = SortedSet([1, 1, 1])
         self.assertEqual(len(s), 1)
+
+
+class TestIterableProtocol(unittest.TestCase):
+
+    def setUp(self):
+        self.s = SortedSet([5, 3, 1, 1, 7])
+
+    def test_iter(self):
+        i = iter(self.s)
+        self.assertEqual(next(i), 1)
+        self.assertEqual(next(i), 3)
+        self.assertEqual(next(i), 5)
+        self.assertEqual(next(i), 7)
+        self.assertRaises(StopIteration, lambda: next(i))
+
+    def test_for_loop(self):
+        expected = [1, 3, 5, 7]
+        for item, index in self.s.items():
+            self.assertEqual(item, expected[index])
