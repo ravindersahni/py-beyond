@@ -11,4 +11,6 @@ class Base:
 
 
 class Sub(Base):
-    pass
+
+    def fn(self):
+        print('Sub.fn()')
