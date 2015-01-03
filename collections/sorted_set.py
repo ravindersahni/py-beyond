@@ -10,7 +10,8 @@ class SortedSet(Sequence):
         self._items = sorted(set(items)) if items is not None else []
 
     def __contains__(self, item):
-        return item in self._items
+        index = bisect_left(self._items, item)
+        return (index != len(self._items)) and (self._items[index] == item)
 
     def __len__(self):
         return len(self._items)
@@ -38,6 +39,4 @@ class SortedSet(Sequence):
         return self._items != other._items
 
     def count(self, value):
-        index = bisect_left(self._items, value)
-        found = (index != len(self._items)) and (self._items[index] == value)
-        return int(found)
+        return int(value in self)
