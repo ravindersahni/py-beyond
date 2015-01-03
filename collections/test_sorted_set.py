@@ -62,3 +62,7 @@ class TestSizedProtocol(unittest.TestCase):
     def test_ten(self):
         s = SortedSet(range(10))
         self.assertEqual(len(s), 10)
+
+    def test_with_duplicates(self):
+        s = SortedSet([1, 1, 1])
+        self.assertEqual(len(s), 1)
