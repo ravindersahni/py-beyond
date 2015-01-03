@@ -32,3 +32,21 @@ class SortedList(SimpleList):
 
     def __repr__(self):
         return 'SortedList({!r})'.format(list(self))
+
+
+class IntList(SimpleList):
+    def __init__(self, items=()):
+        for x in items: self._validate(x)
+        super().__init__(items)
+
+    @staticmethod
+    def _validate(x):
+        if not isinstance(x, int):
+            raise TypeError('IntList only supports integers')
+
+    def add(self, item):
+        self._validate(item)
+        super().add(item)
+
+    def __repr__(self):
+        return 'IntList({!r})'.format(list(self))
