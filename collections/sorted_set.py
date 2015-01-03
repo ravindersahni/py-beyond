@@ -2,6 +2,7 @@ __author__ = 'instancetype'
 
 
 from bisect import bisect_left
+from itertools import chain
 from collections.abc import Sequence
 
 
@@ -46,3 +47,6 @@ class SortedSet(Sequence):
 
     def count(self, value):
         return int(value in self)
+
+    def __add__(self, other):
+        return SortedSet(chain(self._items, other._items))
