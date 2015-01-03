@@ -8,3 +8,7 @@ class Base:
 
     def fn(self):
         print('Base.fn()')
+
+
+class Sub(Base):
+    pass
