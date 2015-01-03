@@ -11,6 +11,8 @@ class Base:
 
 
 class Sub(Base):
+    def __init__(self):
+        print('Sub initializer')
 
     def fn(self):
         print('Sub.fn()')
