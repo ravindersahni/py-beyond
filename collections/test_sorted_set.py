@@ -155,3 +155,19 @@ class TestEqualityProtocol(unittest.TestCase):
     def test_identical(self):
         s = SortedSet([2, 4, 6])
         self.assertTrue(s == s)
+
+
+class TestInequalityProtocol:
+
+    def test_positive_unequal(self):
+        self.assertTrue(SortedSet([2, 3, 4]) != SortedSet([3, 4, 5]))
+
+    def test_negative_unequal(self):
+        self.assertFalse(SortedSet([1, 2, 3]) != SortedSet([1, 2, 3]))
+
+    def test_type_mismatch(self):
+        self.assertTrue(SortedSet([1, 2, 3]) != [1, 2, 3])
+
+    def test_identical(self):
+        s = SortedSet([2, 4, 6])
+        self.assertFalse(s != s)
