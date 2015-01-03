@@ -38,5 +38,11 @@ class SortedSet(Sequence):
             return NotImplemented
         return self._items != other._items
 
+    def index(self, item):
+        index = bisect_left(self._items, item)
+        if (index != len(self._items)) and (self._items[index] == item):
+            return index
+        raise ValueError('{} not found'.format(repr(item)))
+
     def count(self, value):
         return int(value in self)
