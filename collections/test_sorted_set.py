@@ -168,6 +168,21 @@ class TestSequenceProtocol(unittest.TestCase):
     def test_protocol(self):
         self.assertTrue(issubclass(SortedSet, Sequence))
 
+    def test_concatenate_disjoint(self):
+        s = SortedSet([1, 2, 3])
+        t = SortedSet([4, 5, 6])
+        self.assertEqual(s + t, SortedSet([1, 2, 3, 4, 5, 6]))
+
+    def test_concatenate_equal(self):
+        s = SortedSet([1, 2, 3])
+        self.assertEqual(s + s, s)
+
+    def test_concatenate_intersecting(self):
+        s = SortedSet([1, 2, 3, 4])
+        t = SortedSet([3, 4, 5, 6])
+        self.assertEqual(s + t, SortedSet([1, 2, 3, 4, 5, 6]))
+
+
 class TestReprProtocol(unittest.TestCase):
 
     def test_repr_empty(self):
