@@ -87,3 +87,29 @@ class TestIterableProtocol(unittest.TestCase):
         for item in self.s:
             self.assertEqual(item, expected[index])
             index += 1
+
+
+class TestSequenceProtocol(unittest.TestCase):
+
+    def setUp(self):
+        self.s = SortedSet([1, 4, 9, 13, 15])
+
+    def test_index_zero(self):
+        self.assertEqual(self.s[0], 1)
+
+    def test_index_four(self):
+        self.assertEqual(self.s[4], 15)
+
+    def test_index_one_beyond_last(self):
+        with self.assertRaises(IndexError):
+            self.s[5]
+
+    def test_index_minus_one(self):
+        self.assertEqual(self.s[-1], 15)
+
+    def test_index_minus_five(self):
+        self.assertEqual(self.s[-5], 1)
+
+    def test_index_one_before_beginning(self):
+        with self.assertRaises(IndexError):
+            self.s[-6]
