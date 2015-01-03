@@ -56,3 +56,21 @@ class SortedSet(Sequence, Set):
 
     def __rmul__(self, other):
         return self * other
+
+    def issubset(self, iterable):
+        return self <= SortedSet(iterable)
+
+    def issuperset(self, iterable):
+        return self >= SortedSet(iterable)
+
+    def intersection(self, iterable):
+        return self & SortedSet(iterable)
+
+    def union(self, iterable):
+        return self | SortedSet(iterable)
+
+    def symmetric_difference(self, iterable):
+        return self ^ SortedSet(iterable)
+
+    def difference(self, iterable):
+        return self - SortedSet(iterable)
