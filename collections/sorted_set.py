@@ -3,10 +3,10 @@ __author__ = 'instancetype'
 
 from bisect import bisect_left
 from itertools import chain
-from collections.abc import Sequence
+from collections.abc import Sequence, Set
 
 
-class SortedSet(Sequence):
+class SortedSet(Sequence, Set):
     def __init__(self, items=None):
         self._items = sorted(set(items)) if items is not None else []
 
