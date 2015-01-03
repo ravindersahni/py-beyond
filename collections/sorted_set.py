@@ -22,3 +22,6 @@ class SortedSet:
         return 'SortedSet({})'.format(
             repr(self._items) if self._items else ''
         )
+
+    def __eq__(self, other):
+        return self._items == other._items
