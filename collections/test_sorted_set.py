@@ -144,13 +144,13 @@ class TestReprProtocol(unittest.TestCase):
 class TestEqualityProtocol(unittest.TestCase):
 
     def test_positive_equal(self):
-        self.assertTrue(SortedSet([2, 3, 4] == SortedSet(2, 3, 4)))
+        self.assertTrue(SortedSet([2, 3, 4]) == SortedSet(2, 3, 4))
 
     def test_negative_equal(self):
-        self.assertFalse(SortedSet([1, 2, 3] == SortedSet(4, 5, 6)))
+        self.assertFalse(SortedSet([1, 2, 3]) == SortedSet(4, 5, 6))
 
     def test_type_mismatch(self):
-        self.assertFalse(SortedSet([1, 2, 3] == [1, 2, 3]))
+        self.assertFalse(SortedSet([1, 2, 3]) == [1, 2, 3])
 
     def test_identical(self):
         s = SortedSet([2, 4, 6])
