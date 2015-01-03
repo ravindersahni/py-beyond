@@ -182,6 +182,13 @@ class TestSequenceProtocol(unittest.TestCase):
         t = SortedSet([3, 4, 5, 6])
         self.assertEqual(s + t, SortedSet([1, 2, 3, 4, 5, 6]))
 
+    def test_repetition_zero(self):
+        s = SortedSet([1, 2, 3])
+        self.assertEqual(0 * s, SortedSet())
+
+    def test_repetition_nonzero(self):
+        s = SortedSet([2, 3, 4])
+        self.assertEqual(100 * s, s)
 
 class TestReprProtocol(unittest.TestCase):
 
