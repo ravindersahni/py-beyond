@@ -1,5 +1,7 @@
 __author__ = 'instancetype'
 
+import inspect
+
 def dump(obj):
     print('Type')
     print('====')
@@ -8,7 +10,7 @@ def dump(obj):
 
     print('Documentation')
     print('=============')
-    # TODO
+    print(inspect.getdoc(obj))
     print()
 
     print('Attributes')
