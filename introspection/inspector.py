@@ -8,8 +8,7 @@ from sorted_set import SortedSet
 
 def full_sig(method):
     try:
-        # pass
-        return method.__name__ + inspect.signature(method)
+        return method.__name__ + str(inspect.signature(method))
     except ValueError:
         return method.__name__ + '(...)'
 
@@ -30,7 +29,7 @@ def print_table(rows_of_columns, *headers):
 
     rows_of_columns_with_header = itertools.chain([headers], rows_of_columns)
     columns_of_rows = list(zip(*rows_of_columns_with_header))
-    column_widths = [max(map(len, columns_of_rows)) for column in columns_of_rows]
+    column_widths = [max(map(len, column)) for column in columns_of_rows]
     column_specs = ('{{:{w}}}'.format(w=width) for width in column_widths)
     format_spec = ' '.join(column_specs)
     print(format_spec.format(*headers))
