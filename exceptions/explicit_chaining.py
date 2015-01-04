@@ -19,6 +19,8 @@ def main():
     except InclinationError as e:
         print(e.__traceback__)
         traceback.print_tb(e.__traceback__)
+        s = traceback.format_tb(e.__traceback__)
+        print(s)
 
 
 if __name__ == '__main__':
