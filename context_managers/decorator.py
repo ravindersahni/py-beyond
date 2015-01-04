@@ -13,4 +13,5 @@ def logging_context_manager():
         print('logging_context_manager: Normal Exit')
     except Exception:
         print('logging_context_manager: Exceptional Exit', sys.exc_info())
+        raise
 
