@@ -1,6 +1,8 @@
 __author__ = 'instancetype'
 
 import inspect
+import reprlib
+from ..collections.sorted_set import SortedSet
 
 def dump(obj):
     print('Type')
@@ -15,7 +17,15 @@ def dump(obj):
 
     print('Attributes')
     print('==========')
-    # TODO
+    all_attr_names = SortedSet(dir(obj))
+    method_names = SortedSet(
+        filter(lambda attr_name: callable(getattr(obj, attr_name)),
+               all_attr_names))
+    assert method_names <= all_attr_names
+    attr_names = all_attr_names - method_names
+    attr_names_and_values = [(name, reprlib.repr(getattr(obj, name)))
+                             for name in attr_names]
+    print_table(attr_names_and_values, 'Name', 'Value')
     print()
 
     print('Methods')
