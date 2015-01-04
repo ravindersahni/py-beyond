@@ -1,6 +1,6 @@
 __author__ = 'instancetype'
 
-import math
+import math, traceback
 
 
 class InclinationError(Exception):
@@ -18,6 +18,7 @@ def main():
         inclination(0, 5)
     except InclinationError as e:
         print(e.__traceback__)
+        traceback.print_tb(e.__traceback__)
 
 
 if __name__ == '__main__':
