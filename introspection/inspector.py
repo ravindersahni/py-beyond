@@ -2,7 +2,43 @@ __author__ = 'instancetype'
 
 import inspect
 import reprlib
-from ..collections.sorted_set import SortedSet
+import itertools
+from sorted_set import SortedSet
+
+
+def full_sig(method):
+    try:
+        # pass
+        return method.__name__ + inspect.signature(method)
+    except ValueError:
+        return method.__name__ + '(...)'
+
+def brief_doc(obj):
+    doc = obj.__doc__
+    if doc is not None:
+        lines = doc.splitlines()
+        if len(lines) > 0:
+            return lines[0]
+    return ''
+
+def print_table(rows_of_columns, *headers):
+    num_columns = len(rows_of_columns[0])
+    num_headers = len(headers)
+    if len(headers) != num_columns:
+        raise TypeError('Expected {} header arguments, '
+                        'got {}'.format(num_columns, num_headers))
+
+    rows_of_columns_with_header = itertools.chain([headers], rows_of_columns)
+    columns_of_rows = list(zip(*rows_of_columns_with_header))
+    column_widths = [max(map(len, columns_of_rows)) for column in columns_of_rows]
+    column_specs = ('{{:{w}}}'.format(w=width) for width in column_widths)
+    format_spec = ' '.join(column_specs)
+    print(format_spec.format(*headers))
+    rules = ('-' * width for width in column_widths)
+    print(format_spec.format(*rules))
+    for row in rows_of_columns:
+        print (format_spec.format(*row))
+
 
 def dump(obj):
     print('Type')
