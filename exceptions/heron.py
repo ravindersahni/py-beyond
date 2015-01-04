@@ -1,6 +1,6 @@
 __author__ = 'instancetype'
 
-import math
+import math, sys
 
 
 class TriangleError(Exception):
@@ -27,3 +27,14 @@ def triangle_area(a, b, c):
 
     p = (a + b + c) / 2
     return math.sqrt(p * (p - a) * (p- b) * (p - c))
+
+
+def main():
+    try:
+        a = triangle_area(3, 4, 10)
+        print(a)
+    except TriangleError as e:
+        print(e, file=sys.stdin) # intentional error
+
+if __name__ == '__main__':
+    main()
