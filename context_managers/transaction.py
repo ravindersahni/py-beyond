@@ -1,5 +1,7 @@
 __author__ = 'instancetype'
 
+import contextlib
+
 
 class Transaction:
 
@@ -12,3 +14,16 @@ class Transaction:
 
     def rollback(self):
         self.conn._rollback_transaction(self.xid)
+
+
+@contextlib.contextmanager
+def start_transaction(connection):
+    tx = Transaction(connection)
+
+    try:
+        yield tx
+    except:
+        tx.rollback()
+        raise
+
+    tx.commit()
