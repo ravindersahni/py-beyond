@@ -7,7 +7,11 @@ class LoggingContextManager:
         return 'Inside the with-block...'
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        print('LoggingContextManager.__exit__({}, {}, {})'.format(
-            exc_type, exc_val, exc_tb
-        ))
-        return
+        if exc_type is None:
+            print('LoggingContextManager.__exit__:'
+                  'normal exit detected.')
+        else:
+            print('LoggingContextManager.__exit__:'
+                  'Exception detected!'
+                  'type={}, value={}, traceback={}'.format(
+                exc_type, exc_val, exc_tb))
